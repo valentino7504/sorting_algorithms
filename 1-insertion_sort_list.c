@@ -6,9 +6,12 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *unsorted = (*list)->next;
+	listint_t *unsorted;
 	listint_t *next_node, *current_node;
 
+	if (*list == NULL || (*list)->next == NULL)
+		return;
+	unsorted = (*list)->next;
 	while (unsorted != NULL)
 	{
 		next_node = unsorted->next;
