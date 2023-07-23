@@ -6,9 +6,8 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t first_unsorted = 0, i, j, min_index;
-	int minimum = array[first_unsorted], temp;
-
+	size_t first_unsorted = 0, i, j, min_index = 0;
+	int minimum = 0, temp;
 	for (i = 0; i < size; i++)
 	{
 		for (j = first_unsorted; j < size; j++)
