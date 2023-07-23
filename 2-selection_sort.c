@@ -6,12 +6,14 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t first_unsorted = 0, i, j, min_index = 0;
+	size_t i, j, min_index = 0;
 	int minimum = array[0], temp;
 
 	for (i = 0; i < size; i++)
 	{
-		for (j = first_unsorted; j < size; j++)
+		minimum = array[i];
+		min_index = i;
+		for (j = i; j < size; j++)
 		{
 			if (array[j] < minimum)
 			{
@@ -19,15 +21,12 @@ void selection_sort(int *array, size_t size)
 				min_index = j;
 			}
 		}
-		if (min_index != first_unsorted)
+		if (min_index != i)
 		{
-			temp = array[first_unsorted];
-			array[first_unsorted] = minimum;
+			temp = array[i];
+			array[i] = minimum;
 			array[min_index] = temp;
 			print_array(array, size);
 		}
-		first_unsorted++;
-		minimum = array[first_unsorted];
-		min_index = first_unsorted;
 	}
 }
