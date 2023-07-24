@@ -21,15 +21,15 @@ void insertion_sort_list(listint_t **list)
 			if (unsorted->n < current_node->n)
 			{
 				current_node->next = unsorted->next;
+				if (unsorted->next != NULL)
+					unsorted->next->prev = current_node;
 				unsorted->next = current_node;
-				if (current_node->next != NULL)
-					current_node->next->prev = current_node;
 				unsorted->prev = current_node->prev;
-				current_node->prev = unsorted;
-				if (unsorted->prev != NULL)
-					unsorted->prev->next = unsorted;
+				if (current_node->prev != NULL)
+					current_node->prev->next = unsorted;
 				else
 					*list = unsorted;
+				current_node->prev = unsorted;
 				print_list(*list);
 			}
 			else
