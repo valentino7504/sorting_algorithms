@@ -12,28 +12,23 @@ void insertion_sort_list(listint_t **list)
 	if (*list == NULL || (*list)->next == NULL || list == NULL)
 		return;
 	unsorted = (*list)->next;
-	while (unsorted != NULL)
+	while (unsorted)
 	{
 		next_node = unsorted->next;
 		current_node = unsorted->prev;
-		while (current_node != NULL)
+		while (current_node != NULL && unsorted->n < current_node->n)
 		{
-			if (unsorted->n < current_node->n)
-			{
-				current_node->next = unsorted->next;
-				if (unsorted->next != NULL)
-					unsorted->next->prev = current_node;
-				unsorted->next = current_node;
-				unsorted->prev = current_node->prev;
-				if (current_node->prev != NULL)
-					current_node->prev->next = unsorted;
-				else
-					*list = unsorted;
-				current_node->prev = unsorted;
-				print_list(*list);
-			}
+			current_node->next = unsorted->next;
+			if (unsorted->next != NULL)
+				unsorted->next->prev = current_node;
+			unsorted->next = current_node;
+			unsorted->prev = current_node->prev;
+			if (current_node->prev != NULL)
+				current_node->prev->next = unsorted;
 			else
-				break;
+				*list = unsorted;
+			current_node->prev = unsorted;
+			print_list(*list);
 			current_node = unsorted->prev;
 		}
 		unsorted = next_node;
