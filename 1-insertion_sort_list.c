@@ -26,10 +26,13 @@ void insertion_sort_list(listint_t **list)
 			if (current_node->prev != NULL)
 				current_node->prev->next = unsorted;
 			else
+			{
 				*list = unsorted;
+				break;
+			}
 			current_node->prev = unsorted;
-			print_list(*list);
 			current_node = unsorted->prev;
+			print_list((const listint_t *)*list);
 		}
 		unsorted = next_node;
 	}
