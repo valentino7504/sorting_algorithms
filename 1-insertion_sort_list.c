@@ -6,8 +6,7 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *unsorted;
-	listint_t *next_node, *current_node;
+	listint_t *unsorted, *next_node, *current_node;
 
 	if (*list == NULL || (*list)->next == NULL || list == NULL)
 		return;
@@ -29,7 +28,7 @@ void insertion_sort_list(listint_t **list)
 				*list = unsorted;
 			current_node->prev = unsorted;
 			current_node = unsorted->prev;
-			print_list((const listint_t *)*list);
+			print_list(*list);
 		}
 		unsorted = next_node;
 	}
